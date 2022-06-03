@@ -12,7 +12,7 @@ const HeaderComponent = styled.div`
   background-color: #AAAAAA;
 `
 
-export default function Header({children}: {children: React.ReactNode}): React.ReactElement {
+export default function Header ({ children }: {children: React.ReactNode}): React.ReactElement {
   return (
     <HeaderComponent>{children}</HeaderComponent>
   )
