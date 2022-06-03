@@ -14,7 +14,7 @@ const PageContainer = styled.div`
 
 const PageWrapper = styled.div`
   background-color: #696969;
-  font-family: "Lato";
+  font-family: 'Lato';
 `
 
 const PageMain = styled.main`
@@ -22,13 +22,7 @@ const PageMain = styled.main`
 `
 
 const HeaderText = styled.h1`
-    margin: 0;
-`
-
-const SearchBar = styled.input`
-  background-color: white;
-  color: black;
-  margin-right: 5px;
+  margin: 0;
 `
 
 export default function MainLayout ({ children }: { children: React.ReactNode }): React.ReactElement {
@@ -37,7 +31,6 @@ export default function MainLayout ({ children }: { children: React.ReactNode })
       <Header><HeaderText>This is the site header</HeaderText></Header>
       <PageContainer>
         <Sidebar>
-          <SearchBar type="text" placeholder="Search"></SearchBar>
           <p>This is sidebar</p>
           <LoremIpsum p={2} />
         </Sidebar>
