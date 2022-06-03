@@ -19,4 +19,8 @@ const config: GatsbyConfig = {
   }]
 };
 
+module.exports = {
+  graphqlTypegen: true,
+}
+
 export default config;

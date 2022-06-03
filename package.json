@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource/lato": "^4.5.8",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "babel-plugin-styled-components": "^2.0.7",
@@ -25,12 +26,16 @@
     "gatsby-source-filesystem": "^4.15.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-lorem-ipsum": "^1.4.10",
+    "sanitize.css": "^13.0.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
+    "@types/styled-components": "^5.1.25",
+    "@typescript-eslint/parser": "^4.33.0",
     "typescript": "^4.7.2"
   }
 }
