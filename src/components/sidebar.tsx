@@ -1,13 +1,10 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-interface SidebarComponentProps {
-  visible: boolean
-}
-
-const SidebarComponent = styled.aside<SidebarComponentProps>`
+const SidebarComponent = styled.aside`
   position: sticky;
   top: 0;
+  width: 60ch;
 
   padding: 10px 10px 10px 15px;
   gap: 10px;
@@ -19,6 +16,14 @@ const SidebarComponent = styled.aside<SidebarComponentProps>`
   flex-direction: column;
   flex-wrap: nowrap;
   align-self: start;
+
+  transition-duration: 300ms;
+
+  overflow-x: hidden;
+
+  &.hidden {
+    width: 100px;
+  }
 `
 
 const ControlsBar = styled.div`
@@ -40,8 +45,14 @@ const ControlButton = styled.button`
   border-radius: 0;
   padding: 2px;
 
+  transition-duration: 300ms;
+
   &:hover {
     background-color: #333333;
+  }
+
+  &.show-hidden-sidebar {
+    transform: rotate(180deg);
   }
 `
 
@@ -50,6 +61,20 @@ const SearchBar = styled.input`
   color: black;
 
   margin-right: 5px;
+
+  transition-duration: 300ms;
+
+  &.hidden {
+    display: none;
+  }
+`
+
+const SidebarItemsContainer = styled.div`
+  transition-duration: 300ms;
+
+  &.hidden {
+    display: none;
+  }
 `
 
 export default function Sidebar ({ children }: {children: React.ReactNode}): React.ReactElement {
@@ -57,7 +82,6 @@ export default function Sidebar ({ children }: {children: React.ReactNode}): Rea
 
   React.useEffect(() => {
     const savedVisibility = window.localStorage.getItem('isSidebarVisible')
-    console.log(`saved visibility: ${savedVisibility}`)
     if (savedVisibility != null) {
       setVisibility(JSON.parse(savedVisibility))
     }
@@ -65,20 +89,29 @@ export default function Sidebar ({ children }: {children: React.ReactNode}): Rea
 
   React.useEffect(() => {
     window.localStorage.setItem('isSidebarVisible', String(visible))
-    console.log(`set visibility: ${visible}`)
   }, [visible])
 
   const changeVisibility = () => {
     return setVisibility(!visible)
   }
 
+  let hiddenElementsClasses = ''
+  let showSidebarButtonClasses = ''
+
+  if (!visible) {
+    hiddenElementsClasses += 'hidden'
+    showSidebarButtonClasses += 'show-hidden-sidebar'
+  }
+
   return (
-    <SidebarComponent visible={visible}>
+    <SidebarComponent className={hiddenElementsClasses}>
       <ControlsBar>
-      <ControlButton title='Hide sidebar' onClick={changeVisibility}>❮</ControlButton>
+        <ControlButton title='Hide sidebar' onClick={changeVisibility} className={showSidebarButtonClasses}>❮</ControlButton>
       </ControlsBar>
-      <SearchBar type='text' placeholder='Search'></SearchBar>
-      {children}
+      <SearchBar type='text' placeholder='Search' className={hiddenElementsClasses}></SearchBar>
+      <SidebarItemsContainer className={hiddenElementsClasses}>
+        {children}
+      </SidebarItemsContainer>
     </SidebarComponent>
   )
 }

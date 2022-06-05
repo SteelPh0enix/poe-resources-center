@@ -6,9 +6,8 @@ import Sidebar from '../components/sidebar'
 import LoremIpsum from 'react-lorem-ipsum'
 
 const PageContainer = styled.div`
-  display: grid;
-  grid-template-columns: 35ch calc(100% - 35ch);
-  grid-gap: 1fr;
+  display: flex;
+  gap: 5px;
   align-items: start;
 `
 
