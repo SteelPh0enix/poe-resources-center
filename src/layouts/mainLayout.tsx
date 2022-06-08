@@ -15,7 +15,7 @@ const PageContainer = styled.div`
 `
 
 const PageWrapper = styled.div`
-  background-color: #000000;
+  background-color: #37323E;
   color: #A38D6D;
   font-family: 'Lato';
 `
