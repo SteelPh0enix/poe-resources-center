@@ -30,7 +30,7 @@ const HeaderText = styled.h1`
 export default function MainLayout ({ children }: { children: React.ReactNode }): React.ReactElement {
   return (
     <PageWrapper>
-      <Header><HeaderText>This is the site header</HeaderText></Header>
+      <Header><HeaderText>Path of Exile Resources Center</HeaderText></Header>
       <Header justify='left' sticky addMargin><SearchBar/>Hello, world! This is a subheader.</Header>
       <PageContainer>
         <Sidebar>
