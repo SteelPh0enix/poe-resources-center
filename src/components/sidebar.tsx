@@ -5,6 +5,7 @@ const SidebarComponent = styled.aside`
   position: sticky;
   top: 70px;
   width: 60ch;
+  height: 80vh;
 
   padding: 10px 10px 10px 15px;
   gap: 10px;

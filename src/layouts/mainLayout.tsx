@@ -5,8 +5,8 @@ import '@fontsource/lato'
 import Sidebar from '../components/sidebar'
 import LoremIpsum from 'react-lorem-ipsum'
 import SearchBar from '../components/searchbar'
-import { SidebarItem } from '../components/sidebarItem'
-import SidebarLink from '../components/sidebarLink'
+import { SidebarItem } from '../components/sidebar/sidebarItem'
+import SidebarLink from '../components/sidebar/sidebarLink'
 
 const PageContainer = styled.div`
   display: flex;
@@ -36,7 +36,7 @@ export default function MainLayout ({ children }: { children: React.ReactNode })
         <Sidebar>
           <SidebarItem><p>This is sidebar</p></SidebarItem>
           <SidebarLink href="/">Go to main page</SidebarLink>
-          <SidebarItem><LoremIpsum p={2} /></SidebarItem>
+          <SidebarItem><LoremIpsum p={10} /></SidebarItem>
         </Sidebar>
         <PageMain>
           {children}
