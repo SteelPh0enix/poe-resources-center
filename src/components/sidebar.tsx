@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const SidebarComponent = styled.aside`
   position: sticky;
-  top: 0;
+  top: 70px;
   width: 60ch;
 
   padding: 10px 10px 10px 15px;
@@ -22,14 +22,14 @@ const SidebarComponent = styled.aside`
   overflow-x: hidden;
 
   &.hidden {
-    width: 100px;
+    width: 120px;
   }
 `
 
 const ControlsBar = styled.div`
   display: flex;
-  justify-content: flex-end;
 
+  margin-right: 5px;
   padding: 5px;
   gap: 10px;
 
@@ -53,19 +53,6 @@ const ControlButton = styled.button`
 
   &.show-hidden-sidebar {
     transform: rotate(180deg);
-  }
-`
-
-const SearchBar = styled.input`
-  background-color: white;
-  color: black;
-
-  margin-right: 5px;
-
-  transition-duration: 300ms;
-
-  &.hidden {
-    display: none;
   }
 `
 
@@ -108,7 +95,6 @@ export default function Sidebar ({ children }: {children: React.ReactNode}): Rea
       <ControlsBar>
         <ControlButton title='Hide sidebar' onClick={changeVisibility} className={showSidebarButtonClasses}>❮</ControlButton>
       </ControlsBar>
-      <SearchBar type='text' placeholder='Search' className={hiddenElementsClasses}></SearchBar>
       <SidebarItemsContainer className={hiddenElementsClasses}>
         {children}
       </SidebarItemsContainer>
