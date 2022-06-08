@@ -21,6 +21,8 @@ const SidebarComponent = styled.aside`
 
   overflow-x: hidden;
 
+  white-space: nowrap;
+
   &.hidden {
     width: 120px;
   }

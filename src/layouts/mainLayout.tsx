@@ -5,6 +5,8 @@ import '@fontsource/lato'
 import Sidebar from '../components/sidebar'
 import LoremIpsum from 'react-lorem-ipsum'
 import SearchBar from '../components/searchbar'
+import { SidebarItem } from '../components/sidebarItem'
+import SidebarLink from '../components/sidebarLink'
 
 const PageContainer = styled.div`
   display: flex;
@@ -32,8 +34,9 @@ export default function MainLayout ({ children }: { children: React.ReactNode })
       <Header justify='left' sticky addMargin><SearchBar/>Hello, world! This is a subheader.</Header>
       <PageContainer>
         <Sidebar>
-          <p>This is sidebar</p>
-          <LoremIpsum p={2} />
+          <SidebarItem><p>This is sidebar</p></SidebarItem>
+          <SidebarLink href="/">Go to main page</SidebarLink>
+          <SidebarItem><LoremIpsum p={2} /></SidebarItem>
         </Sidebar>
         <PageMain>
           {children}
