@@ -1,20 +1,17 @@
 import styled from 'styled-components'
-import { SidebarLinkComponent } from './sidebarLink'
 
 export const SidebarItem = styled.div`
   white-space: normal;
-  border: 2px solid #b15500b2;
+  border-width: 3px;
+  border-style: ${props => props.theme.sidebarItemHasBorder ? 'solid' : 'none'};
+  border-color: ${props => props.theme.sidebarItemBorderColor};
   padding: 4px;
   margin: 4px;
-  background-color: #8b8b8bb1;
+  background-color: ${props => props.theme.sidebarItemColor};
 
-  &:hover {
-    background-color: #adadadba;
-    border-color: #ff7b00b1;
-
-    ${SidebarLinkComponent} {
-      color: #c54800;
-    }
+  &:hover, &:active {
+    background-color: ${props => props.theme.sidebarItemActiveColor};
+    border-color: ${props => props.theme.sidebarItemBorderActiveColor};
   }
 
 `

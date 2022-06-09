@@ -5,7 +5,7 @@ const SidebarComponent = styled.aside`
   position: sticky;
   top: 70px;
   width: 60ch;
-  height: 80vh;
+  height: 85vh;
 
   padding: 10px 10px 10px 15px;
   gap: 10px;
@@ -18,7 +18,8 @@ const SidebarComponent = styled.aside`
   flex-wrap: nowrap;
   align-self: start;
 
-  transition-duration: 300ms;
+  transition: ${props => (props.theme.animationsEnabled && props.theme.sidebarToggleAnimationEnabled) ? 'all' : 'none'};
+  transition-duration: ${props => props.theme.sidebarToggleAnimationDuration};
 
   overflow-x: hidden;
 
@@ -26,10 +27,6 @@ const SidebarComponent = styled.aside`
 
   &.hidden {
     width: 120px;
-  }
-
-  a {
-    color: ${props => props.theme.sidebarLinkColor};
   }
 `
 
@@ -40,23 +37,14 @@ const ControlsBar = styled.div`
   padding: 5px;
   gap: 10px;
 
-  background-color: #555555;
+  background-color: ${props => props.theme.sidebarControlBoxColor};
 `
 
 const ControlButton = styled.button`
-  background-color: black;
-  border-color: black;
-
   font-size: 20px;
   width: 2em;
   border-radius: 0;
   padding: 2px;
-
-  transition-duration: 300ms;
-
-  &:hover {
-    background-color: #333333;
-  }
 
   &.show-hidden-sidebar {
     transform: rotate(180deg);
@@ -64,8 +52,6 @@ const ControlButton = styled.button`
 `
 
 const SidebarItemsContainer = styled.div`
-  transition-duration: 300ms;
-
   &.hidden {
     display: none;
   }

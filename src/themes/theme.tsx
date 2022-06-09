@@ -27,10 +27,11 @@ export interface Theme {
   sidebarItemHasBorder: boolean
   sidebarItemBorderColor: string
   sidebarItemBorderActiveColor: string
+  sidebarControlBoxColor: string,
   sidebarLinkColor: string
   sidebarLinkActiveColor: string
-  sidebarAnimationsEnabled: boolean
-  sidebarAnimationsDuration: string
+  sidebarToggleAnimationEnabled: boolean,
+  sidebarToggleAnimationDuration: string,
 
   buttonColor: string
   buttonFontColor: string
