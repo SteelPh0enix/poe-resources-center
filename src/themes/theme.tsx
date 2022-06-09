@@ -1,5 +1,7 @@
 export interface Theme {
   mainColor: string
+  animationsEnabled: boolean
+  smoothScrollingEnabled: boolean
 
   headerColor: string
   headerFontColor: string
@@ -14,6 +16,8 @@ export interface Theme {
   fontLinkActiveColor: string
   fontLinkHasUnderscore: boolean
   fontLinkIsBold: boolean
+  fontAnimationsEnabled: boolean,
+  fontAnimationsDuration: string,
 
   sidebarColor: string
   sidebarFontColor: string
@@ -26,6 +30,8 @@ export interface Theme {
   sidebarItemBorderActiveColor: string
   sidebarLinkColor: string
   sidebarLinkActiveColor: string
+  sidebarAnimationsEnabled: boolean
+  sidebarAnimationsDuration: string
 
   buttonColor: string
   buttonFontColor: string
@@ -34,6 +40,8 @@ export interface Theme {
   buttonHasBorder: boolean
   buttonBorderColor: string
   buttonBorderActiveColor: string
+  buttonAnimationsEnabled: boolean
+  buttonAnimationsDuration: string
 
   inputFontColor: string
   inputBackgroundColor: string
@@ -43,4 +51,6 @@ export interface Theme {
   inputActiveFontColor: string
   inputActiveBorderColor: string
   inputActiveBackgroundColor: string
+  inputAnimationsEnabled: boolean,
+  inputAnimationsDuration: string,
 }

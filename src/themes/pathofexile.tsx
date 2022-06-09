@@ -5,9 +5,12 @@ const defaultFontLinkColor = '#a5814b'
 const defaultFontLinkActiveColor = '#cc8a27'
 const defaultBorderColor = '#5f3f0e'
 const defaultBorderActiveColor = '#aa6d12'
+const defaultAnimationDuration = '300ms'
 
 export const PathOfExileTheme: Theme = {
   mainColor: '#221d19',
+  animationsEnabled: true,
+  smoothScrollingEnabled: true,
 
   headerColor: '#251d13',
   headerFontColor: '#ce8a25',
@@ -22,6 +25,8 @@ export const PathOfExileTheme: Theme = {
   fontLinkActiveColor: defaultFontLinkActiveColor,
   fontLinkHasUnderscore: true,
   fontLinkIsBold: false,
+  fontAnimationsEnabled: true,
+  fontAnimationsDuration: defaultAnimationDuration,
 
   sidebarColor: '#403B33',
   sidebarFontColor: defaultFontColor,
@@ -34,6 +39,8 @@ export const PathOfExileTheme: Theme = {
   sidebarItemBorderActiveColor: defaultBorderActiveColor,
   sidebarLinkColor: defaultFontLinkColor,
   sidebarLinkActiveColor: defaultFontLinkActiveColor,
+  sidebarAnimationsEnabled: true,
+  sidebarAnimationsDuration: defaultAnimationDuration,
 
   buttonColor: '#3a2b1d',
   buttonFontColor: '#c79a57',
@@ -42,6 +49,8 @@ export const PathOfExileTheme: Theme = {
   buttonHasBorder: true,
   buttonBorderColor: defaultBorderColor,
   buttonBorderActiveColor: '#97714d',
+  buttonAnimationsEnabled: true,
+  buttonAnimationsDuration: defaultAnimationDuration,
 
   inputFontColor: defaultFontColor,
   inputBackgroundColor: '#2b241e',
@@ -50,5 +59,7 @@ export const PathOfExileTheme: Theme = {
   inputBorderColor: defaultBorderColor,
   inputActiveFontColor: defaultFontColor,
   inputActiveBorderColor: defaultBorderActiveColor,
-  inputActiveBackgroundColor: '#3d2f23'
+  inputActiveBackgroundColor: '#3d2f23',
+  inputAnimationsEnabled: true,
+  inputAnimationsDuration: defaultAnimationDuration
 }
