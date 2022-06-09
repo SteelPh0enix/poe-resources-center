@@ -21,6 +21,6 @@ export const SidebarLinkComponent = styled(props => <Link {...props} />)`
 
 export default function SidebarLink (props: SidebarLinkProps): React.ReactElement {
   return (
-    <SidebarItem><SidebarLinkComponent href={props.href} >{props.children}</SidebarLinkComponent></SidebarItem>
+    <SidebarItem><SidebarLinkComponent to={props.href} >{props.children}</SidebarLinkComponent></SidebarItem>
   )
 }

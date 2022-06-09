@@ -1,24 +1,23 @@
 import { Theme } from './theme'
 
 const defaultFontColor = '#bea277'
-const defaultFontLinkColor = '#a5814b'
-const defaultFontLinkActiveColor = '#cc8a27'
+const defaultFontLinkColor = '#b38136'
+const defaultFontLinkActiveColor = '#e0921c'
 const defaultBorderColor = '#5f3f0e'
 const defaultBorderActiveColor = '#aa6d12'
-const defaultAnimationDuration = '300ms'
+const defaultAnimationDuration = '200ms'
 
 export const PathOfExileTheme: Theme = {
   mainColor: '#221d19',
   animationsEnabled: true,
   smoothScrollingEnabled: true,
 
-  headerColor: '#251d13',
-  headerFontColor: '#ce8a25',
-  subHeaderFontColor: '#af8340',
-  subHeaderLinkColor: '#8d5c11',
-  subHeaderLinkActiveColor: '#d68b1a',
-  subHeaderLinkHasUnderscore: false,
-  subHeaderLinkIsBold: true,
+  headerColor: '#44392d',
+  headerFontColor: '#cf9845',
+  headerLinkColor: '#c27400',
+  headerLinkActiveColor: '#d68b1a',
+  headerLinkHasUnderscore: false,
+  headerLinkIsBold: true,
 
   fontColor: defaultFontColor,
   fontLinkColor: defaultFontLinkColor,

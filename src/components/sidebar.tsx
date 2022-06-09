@@ -10,8 +10,8 @@ const SidebarComponent = styled.aside`
   padding: 10px 10px 10px 15px;
   gap: 10px;
 
-  background-color: #333333;
-  color: white;
+  background-color: ${props => props.theme.sidebarColor};
+  color: ${props => props.theme.sidebarFontColor};
 
   display: flex;
   flex-direction: column;
@@ -26,6 +26,10 @@ const SidebarComponent = styled.aside`
 
   &.hidden {
     width: 120px;
+  }
+
+  a {
+    color: ${props => props.theme.sidebarLinkColor};
   }
 `
 

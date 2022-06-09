@@ -5,11 +5,10 @@ export interface Theme {
 
   headerColor: string
   headerFontColor: string
-  subHeaderFontColor: string
-  subHeaderLinkColor: string
-  subHeaderLinkActiveColor: string
-  subHeaderLinkHasUnderscore: boolean
-  subHeaderLinkIsBold: boolean
+  headerLinkColor: string
+  headerLinkActiveColor: string
+  headerLinkHasUnderscore: boolean
+  headerLinkIsBold: boolean
 
   fontColor: string
   fontLinkColor: string

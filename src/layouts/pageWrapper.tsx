@@ -3,13 +3,16 @@ import styled from 'styled-components'
 export const PageWrapper = styled.div`
   background-color: ${props => props.theme.mainColor};
   color: ${props => props.theme.fontColor};
+
   font-family: 'Lato';
+
   scroll-behavior: ${props => props.theme.smoothScrollingEnabled ? 'smooth' : 'auto'};
 
   a {
     color: ${props => props.theme.fontLinkColor};
     font-weight: ${props => props.theme.fontLinkIsBold ? 'bold' : 'normal'};
     text-decoration: ${props => props.theme.fontLinkHasUnderscore ? 'underline' : 'none'};
+
     transition: ${props => (props.theme.animationsEnabled && props.theme.fontAnimationsEnabled) ? 'all' : 'none'};
     transition-duration: ${props => props.theme.fontAnimationsDuration};
 
@@ -31,7 +34,9 @@ export const PageWrapper = styled.div`
     background-color: ${props => props.theme.buttonColor};
     border: ${props => props.theme.buttonHasBorder ? 'solid' : 'none'};
     border-color: ${props => props.theme.buttonBorderColor};
-    animation-duration: 200ms;
+
+    transition: ${props => (props.theme.animationsEnabled && props.theme.buttonAnimationsEnabled) ? 'all' : 'none'};
+    transition-duration: ${props => props.theme.buttonAnimationsDuration};
 
     :hover {
       color: ${props => props.theme.buttonFontActiveColor};
@@ -48,6 +53,9 @@ export const PageWrapper = styled.div`
     border: ${props => props.theme.inputHasBorder ? 'solid' : 'none'};
     border-color: ${props => props.theme.inputBorderColor};
     border-radius: 1px;
+
+    transition: ${props => (props.theme.animationsEnabled && props.theme.inputAnimationsEnabled) ? 'all' : 'none'};
+    transition-duration: ${props => props.theme.inputAnimationsDuration};
 
     :active, :focus {
       color: ${props => props.theme.inputActiveFontColor};

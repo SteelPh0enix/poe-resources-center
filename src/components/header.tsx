@@ -16,7 +16,17 @@ const HeaderComponent = styled.div`
   justify-content: center;
   align-items: baseline;
   gap: 20px;
-  background-color: #AAAAAA;
+  
+  color: ${props => props.theme.headerFontColor};
+  background-color: ${props => props.theme.headerColor};
+  
+  a {
+    color: ${props => props.theme.headerLinkColor};
+    
+    :active :hover :focus {
+      color: ${props => props.theme.headerLinkActiveColor};
+    }
+  }
 
   &.right-just {
     justify-content: right;
