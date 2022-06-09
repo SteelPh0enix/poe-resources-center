@@ -12,6 +12,9 @@ export const PathOfExileTheme: Theme = {
   animationsEnabled: true,
   smoothScrollingEnabled: true,
 
+  scrollbarColor: '#473a2e',
+  scrollbarBackgroundColor: '#2c1d10',
+
   headerColor: '#44392d',
   headerFontColor: '#cf9845',
   headerLinkColor: '#c27400',

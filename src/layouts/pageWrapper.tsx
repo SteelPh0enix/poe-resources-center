@@ -8,6 +8,22 @@ export const PageWrapper = styled.div`
 
   scroll-behavior: ${props => props.theme.smoothScrollingEnabled ? 'smooth' : 'auto'};
 
+  scrollbar-color: ${props => props.theme.scrollbarColor} ${props => props.theme.scrollbarBackgroundColor};
+  scrollbar-width: 12px;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.scrollbarColor};
+  }
+   
+  &::-webkit-scrollbar-track {
+    background: ${props => props.theme.scrollbarBackgroundColor};
+  }
+
   a {
     color: ${props => props.theme.fontLinkColor};
     font-weight: ${props => props.theme.fontLinkIsBold ? 'bold' : 'normal'};

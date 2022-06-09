@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const SidebarComponent = styled.aside`
   position: sticky;
-  top: 70px;
+  top: 80px;
   width: 60ch;
   height: 85vh;
 
@@ -86,7 +86,7 @@ export default function Sidebar ({ children }: {children: React.ReactNode}): Rea
   return (
     <SidebarComponent className={hiddenElementsClasses}>
       <ControlsBar>
-        <ControlButton title='Hide sidebar' onClick={changeVisibility} className={showSidebarButtonClasses}>❮</ControlButton>
+        <ControlButton type='button' title='Hide sidebar' onClick={changeVisibility} className={showSidebarButtonClasses}>❮</ControlButton>
       </ControlsBar>
       <SidebarItemsContainer className={hiddenElementsClasses}>
         {children}

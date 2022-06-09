@@ -3,6 +3,9 @@ export interface Theme {
   animationsEnabled: boolean
   smoothScrollingEnabled: boolean
 
+  scrollbarColor: string
+  scrollbarBackgroundColor: string
+
   headerColor: string
   headerFontColor: string
   headerLinkColor: string
