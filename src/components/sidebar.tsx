@@ -4,10 +4,10 @@ import styled from 'styled-components'
 const SidebarComponent = styled.aside`
   position: sticky;
   top: 80px;
-  width: 60ch;
+  flex: 0 0 30ch;
   height: 85vh;
 
-  padding: 10px 10px 10px 15px;
+  padding: 5px 5px 5px 10px;
   gap: 10px;
 
   background-color: ${props => props.theme.sidebarColor};
@@ -42,7 +42,7 @@ const SidebarComponent = styled.aside`
   }
 
   &.hidden {
-    width: 120px;
+    flex: 0 0 65px;
   }
 `
 
