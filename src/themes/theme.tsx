@@ -35,6 +35,8 @@ export interface Theme {
   sidebarLinkActiveColor: string
   sidebarToggleAnimationEnabled: boolean,
   sidebarToggleAnimationDuration: string,
+  sidebarAnimationsEnabled: boolean,
+  sidebarAnimationsDuration: string,
 
   buttonColor: string
   buttonFontColor: string

@@ -44,6 +44,8 @@ export const PathOfExileTheme: Theme = {
   sidebarLinkActiveColor: defaultFontLinkActiveColor,
   sidebarToggleAnimationEnabled: true,
   sidebarToggleAnimationDuration: '350ms',
+  sidebarAnimationsEnabled: true,
+  sidebarAnimationsDuration: defaultAnimationDuration,
 
   buttonColor: '#3a2b1d',
   buttonFontColor: '#c79a57',
