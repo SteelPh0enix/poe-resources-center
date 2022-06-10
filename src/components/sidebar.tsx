@@ -44,6 +44,14 @@ const SidebarComponent = styled.aside`
   &.hidden {
     flex: 0 0 65px;
   }
+
+  @media(max-height: 900px) {
+    height: 70vh;
+  }
+
+  @media(max-height: 600px) {
+    height: 60vh;
+  }
 `
 
 const ControlsBar = styled.div`

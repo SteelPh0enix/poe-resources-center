@@ -5,8 +5,14 @@ const SearchBarComponent = styled.input`
   background-color: white;
   color: black;
 
+  transition: all 1s;
+
   &.hidden {
     display: none;
+  }
+
+  &:active, &:focus {
+    flex: 1 1 15%;
   }
 `
 

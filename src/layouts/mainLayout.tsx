@@ -26,6 +26,14 @@ const HeaderText = styled.h1`
   margin: 0;
 `
 
+const HeaderPad = styled.div`
+  flex: 1 1 35%;
+
+  @media(max-width: 1300px) {
+    flex: 0 0 0px;
+  }
+`
+
 export default function MainLayout ({ children }: { children: React.ReactNode }): React.ReactElement {
   return (
     <ThemeProvider theme={PathOfExileTheme}>
@@ -33,11 +41,12 @@ export default function MainLayout ({ children }: { children: React.ReactNode })
         <Header>
           <HeaderText>Path of Exile Resources Center</HeaderText>
         </Header>
-        <Header justify='left' sticky addMargin>
-          <SearchBar/>
+        <Header justify='right' sticky addMargin>
+          <HeaderPad/>
           <div>Hello, world! This is a subheader.</div>
           <Link to="/">Go to main page</Link>
           <a href='https://google.com/'>This is an external link</a>
+          <SearchBar/>
         </Header>
         <PageContainer>
           <Sidebar>

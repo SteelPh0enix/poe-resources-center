@@ -32,7 +32,7 @@ export const PageWrapper = styled.div`
     transition: ${props => (props.theme.animationsEnabled && props.theme.fontAnimationsEnabled) ? 'all' : 'none'};
     transition-duration: ${props => props.theme.fontAnimationsDuration};
 
-    :active, :hover, :focus {
+    &:active, &:hover, &:focus {
       color: ${props => props.theme.fontLinkActiveColor};
     }
   }
@@ -54,7 +54,7 @@ export const PageWrapper = styled.div`
     transition: ${props => (props.theme.animationsEnabled && props.theme.buttonAnimationsEnabled) ? 'all' : 'none'};
     transition-duration: ${props => props.theme.buttonAnimationsDuration};
 
-    :hover {
+    &:hover {
       color: ${props => props.theme.buttonFontActiveColor};
       background-color: ${props => props.theme.buttonActiveColor};
       border-color: ${props => props.theme.buttonBorderActiveColor};
@@ -73,11 +73,11 @@ export const PageWrapper = styled.div`
     transition: ${props => (props.theme.animationsEnabled && props.theme.inputAnimationsEnabled) ? 'all' : 'none'};
     transition-duration: ${props => props.theme.inputAnimationsDuration};
 
-    ::placeholder {
+    &::placeholder {
       color: ${props => props.theme.inputPlaceholderFontColor};
     }
 
-    :active, :focus {
+    &:active, &:focus {
       color: ${props => props.theme.inputActiveFontColor};
       border-color: ${props => props.theme.inputActiveBorderColor};
       background-color: ${props => props.theme.inputActiveBackgroundColor};
