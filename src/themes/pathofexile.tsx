@@ -1,21 +1,21 @@
 import { Theme } from './theme'
 
-const defaultFontColor = '#bea277'
-const defaultFontLinkColor = '#b38136'
-const defaultFontLinkActiveColor = '#e0921c'
-const defaultBorderColor = '#5f3f0e'
-const defaultBorderActiveColor = '#aa6d12'
+const defaultFontColor = '#d8aa64'
+const defaultFontLinkColor = '#ffc267'
+const defaultFontLinkActiveColor = '#f19f22'
+const defaultBorderColor = '#7a4f0d'
+const defaultBorderActiveColor = '#bb7b1c'
 const defaultAnimationDuration = '200ms'
 
 export const PathOfExileTheme: Theme = {
-  mainColor: '#221d19',
+  mainColor: '#13110f',
   animationsEnabled: true,
   smoothScrollingEnabled: true,
 
   scrollbarColor: '#473a2e',
   scrollbarBackgroundColor: '#2c1d10',
 
-  headerColor: '#44392d',
+  headerColor: '#3f2f18',
   headerFontColor: '#cf9845',
   headerLinkColor: '#c27400',
   headerLinkActiveColor: '#d68b1a',
@@ -30,16 +30,16 @@ export const PathOfExileTheme: Theme = {
   fontAnimationsEnabled: true,
   fontAnimationsDuration: defaultAnimationDuration,
 
-  sidebarColor: '#383023',
+  sidebarColor: '#241708',
   sidebarFontColor: defaultFontColor,
   sidebarFontLinkHasUnderscore: true,
   sidebarFontLinkIsBold: true,
-  sidebarItemColor: '#413017',
-  sidebarItemActiveColor: '#4b3917',
+  sidebarItemColor: '#362611',
+  sidebarItemActiveColor: '#462d10',
   sidebarItemHasBorder: true,
-  sidebarItemBorderColor: '#251e12',
+  sidebarItemBorderColor: '#643d0c',
   sidebarItemBorderActiveColor: defaultBorderActiveColor,
-  sidebarControlBoxColor: '#524a3d',
+  sidebarControlBoxColor: '#241708',
   sidebarLinkColor: defaultFontLinkColor,
   sidebarLinkActiveColor: defaultFontLinkActiveColor,
   sidebarToggleAnimationEnabled: true,
