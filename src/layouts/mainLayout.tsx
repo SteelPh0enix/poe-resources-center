@@ -22,7 +22,9 @@ const PageMain = styled.main`
   padding: 10px 10px 10px 20px;
 `
 
-const HeaderText = styled.h1`
+const HeaderText = styled(props => <Link {...props} />)`
+  font-size: 36pt;
+  text-decoration: none !important;
   margin: 0;
 `
 
@@ -39,7 +41,7 @@ export default function MainLayout ({ children }: { children: React.ReactNode })
     <ThemeProvider theme={PathOfExileTheme}>
       <PageWrapper>
         <Header>
-          <HeaderText>Path of Exile Resources Center</HeaderText>
+          <HeaderText to='/'>Path of Exile Resources Center</HeaderText>
         </Header>
         <Header justify='right' sticky addMargin>
           <HeaderPad/>

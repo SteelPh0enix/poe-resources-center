@@ -32,7 +32,7 @@ export const PageWrapper = styled.div`
     transition: ${props => (props.theme.animationsEnabled && props.theme.fontAnimationsEnabled) ? 'all' : 'none'};
     transition-duration: ${props => props.theme.fontAnimationsDuration};
 
-    &:active, &:hover, &:focus {
+    &:hover, &:active {
       color: ${props => props.theme.fontLinkActiveColor};
     }
   }
