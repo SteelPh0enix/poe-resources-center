@@ -5,7 +5,7 @@ const SearchBarComponent = styled.input`
   background-color: white;
   color: black;
 
-  transition: all 1s;
+  transition: ${props => (props.theme.animationsEnabled && props.theme.searchBarAnimationEnabled) ? 'all' : 'none'} ${props => props.theme.searchBarAnimationDuration};
 
   &.hidden {
     display: none;

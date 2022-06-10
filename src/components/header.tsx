@@ -10,7 +10,7 @@ interface HeaderProps {
 
 const HeaderComponent = styled.div`
   margin: 0;
-  padding: 1em 5em 1em 5em;
+  padding: 0.5em 3em 0.5em 3em;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -39,13 +39,21 @@ const HeaderComponent = styled.div`
   }
 
   &.sticky {
-    position: sticky;
-    left: 0;
-    top: 0;
+    @media(min-width: 1000px) {
+      position: sticky;
+      left: 0;
+      top: 0;
+    }
   }
 
   &.bottom-margin {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  @media(max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
   }
 `
 

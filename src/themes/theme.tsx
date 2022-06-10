@@ -3,6 +3,9 @@ export interface Theme {
   animationsEnabled: boolean
   smoothScrollingEnabled: boolean
 
+  searchBarAnimationEnabled: boolean
+  searchBarAnimationDuration: string
+
   scrollbarColor: string
   scrollbarBackgroundColor: string
 

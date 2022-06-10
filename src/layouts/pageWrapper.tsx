@@ -82,5 +82,7 @@ export const PageWrapper = styled.div`
       border-color: ${props => props.theme.inputActiveBorderColor};
       background-color: ${props => props.theme.inputActiveBackgroundColor};
     }
+
+
   }
 `

@@ -5,7 +5,7 @@ const SidebarComponent = styled.aside`
   position: sticky;
   top: 80px;
   flex: 0 0 30ch;
-  height: 80vh;
+  height: 85vh;
 
   padding: 5px 5px 5px 10px;
   gap: 10px;
@@ -45,8 +45,13 @@ const SidebarComponent = styled.aside`
     flex: 0 0 65px;
   }
 
+  @media(max-width: 1000px) {
+    top: 1vh;
+    height: 95vh !important;
+  }
+
   @media(max-height: 900px) {
-    height: 70vh;
+    height: 80vh;
   }
 
   @media(max-height: 600px) {
