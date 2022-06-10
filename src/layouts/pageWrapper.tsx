@@ -73,14 +73,14 @@ export const PageWrapper = styled.div`
     transition: ${props => (props.theme.animationsEnabled && props.theme.inputAnimationsEnabled) ? 'all' : 'none'};
     transition-duration: ${props => props.theme.inputAnimationsDuration};
 
+    ::placeholder {
+      color: ${props => props.theme.inputPlaceholderFontColor};
+    }
+
     :active, :focus {
       color: ${props => props.theme.inputActiveFontColor};
       border-color: ${props => props.theme.inputActiveBorderColor};
       background-color: ${props => props.theme.inputActiveBackgroundColor};
-
-      ::placeholder {
-        color: ${props => props.theme.inputPlaceholderFontColor};
-      }
     }
   }
 `

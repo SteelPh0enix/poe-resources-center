@@ -25,6 +25,22 @@ const SidebarComponent = styled.aside`
 
   white-space: nowrap;
 
+  scrollbar-color: ${props => props.theme.scrollbarColor} ${props => props.theme.scrollbarBackgroundColor};
+  scrollbar-width: 12px;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.scrollbarColor};
+  }
+   
+  &::-webkit-scrollbar-track {
+    background: ${props => props.theme.scrollbarBackgroundColor};
+  }
+
   &.hidden {
     width: 120px;
   }
