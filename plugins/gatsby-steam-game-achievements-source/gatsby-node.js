@@ -17,7 +17,13 @@ exports.onPreInit = () => {
   console.log('[SteamAchievements] Loaded!')
 }
 
-const GAME_NODE_TYPE = 'game'
+const GAME_NODE_TYPE = 'GameAchievements'
+
+function zipGameTitlesToAchievements (titles, achievements) {
+  return titles.map((title, index) => {
+    return { id: index, title, achievements: achievements[index] }
+  })
+}
 
 exports.sourceNodes = async ({
   actions,
@@ -25,33 +31,38 @@ exports.sourceNodes = async ({
   createNodeId
 }, { games }) => {
   console.log('[SteamAchievements] Started data fetching process...')
-  // const { createNode } = actions
+  const { createNode } = actions
+  const gameTitles = games.map(({ title }) => title)
 
-  const fetchedAchievements = await fetchGameAchievementsDataFromSteam(games.map(({ name, steamID }) => steamID))
-  console.log(fetchedAchievements)
+  const fetchedAchievements = await fetchGameAchievementsDataFromSteam(games.map(({ steamID }) => steamID)).catch((error) => {
+    console.log(`Error when fetching achievements: ${error}`)
+  })
 
-  // const data = {
+  const gamesData = zipGameTitlesToAchievements(gameTitles, fetchedAchievements)
 
-  // }
+  gamesData.forEach(game => {
+    console.log(`Game title: ${game.title}`)
+    console.log(game)
+  })
 
-  // data.gamesAchievements.forEach(game => createNode({
-  //   ...game,
-  //   id: createNodeId(`${GAME_NODE_TYPE}-${game.id}`),
-  //   parent: null,
-  //   children: [],
-  //   internal: {
-  //     type: GAME_NODE_TYPE,
-  //     content: JSON.stringify(game),
-  //     contentDigest: createContentDigest(game)
-  //   }
-  // }))
+  gamesData.forEach(game => createNode({
+    ...game,
+    id: createNodeId(`${GAME_NODE_TYPE}-${game.id}`),
+    parent: null,
+    children: [],
+    internal: {
+      type: GAME_NODE_TYPE,
+      content: JSON.stringify(game),
+      contentDigest: createContentDigest(game)
+    }
+  }))
 
   console.log('[SteamAchievements] Data fetched and put in GraphQL!')
 }
 
 exports.pluginOptionsSchema = ({ Joi }) => {
   const gameInfo = Joi.object().keys({
-    name: Joi.string().required().description('Game title, visual-only'),
+    title: Joi.string().required().description('Game title, visual-only'),
     steamID: Joi.string().required().description('Steam game ID')
   })
 
