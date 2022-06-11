@@ -1,0 +1,19 @@
+{
+  "name": "gatsby-steam-game-achievements-source",
+  "version": "1.0.0",
+  "description": "Gatsby source for Steam games global achievements",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build script setup\""
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "author": "Wojciech Olech <steelphoenix2137@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
