@@ -53,7 +53,8 @@ export default function MainLayout ({ children }: { children: React.ReactNode })
         <PageContainer>
           <Sidebar>
             <SidebarItem><p>This is sidebar</p></SidebarItem>
-            <SidebarLink href="/">Go to main page</SidebarLink>
+            <SidebarLink to="/">Go to main page</SidebarLink>
+            <SidebarLink to="/achievementsChart">See achievements chart</SidebarLink>
             <SidebarExternalLink href="https://google.com/">External link</SidebarExternalLink>
             <SidebarItem><LoremIpsum p={10} /></SidebarItem>
           </Sidebar>

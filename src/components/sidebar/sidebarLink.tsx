@@ -4,7 +4,7 @@ import { SidebarItem } from './sidebarItem'
 import { Link } from 'gatsby'
 
 interface SidebarLinkProps {
-  href: string,
+  to: string,
   children: React.ReactNode
 }
 
@@ -22,6 +22,6 @@ export const SidebarLinkComponent = styled(props => <Link {...props} />)`
 
 export default function SidebarLink (props: SidebarLinkProps): React.ReactElement {
   return (
-    <SidebarItem><SidebarLinkComponent to={props.href} >{props.children}</SidebarLinkComponent></SidebarItem>
+    <SidebarItem><SidebarLinkComponent to={props.to} >{props.children}</SidebarLinkComponent></SidebarItem>
   )
 }

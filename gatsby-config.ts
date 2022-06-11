@@ -30,7 +30,9 @@ module.exports = {
         { title: 'Path of Exile', steamID: '238960' }
       ]
     }
-  }]
+  },
+  'gatsby-plugin-graphql-codegen'
+  ]
 }
 
 export default config

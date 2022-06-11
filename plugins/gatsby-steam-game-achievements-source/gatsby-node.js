@@ -40,11 +40,6 @@ exports.sourceNodes = async ({
 
   const gamesData = zipGameTitlesToAchievements(gameTitles, fetchedAchievements)
 
-  gamesData.forEach(game => {
-    console.log(`Game title: ${game.title}`)
-    console.log(game)
-  })
-
   gamesData.forEach(game => createNode({
     ...game,
     id: createNodeId(`${GAME_NODE_TYPE}-${game.id}`),

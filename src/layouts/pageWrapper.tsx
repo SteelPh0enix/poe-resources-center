@@ -37,7 +37,7 @@ export const PageWrapper = styled.div`
     }
   }
 
-  // add an arrow to indicate the link is external
+  // add an arrow to indicate that the link is external
   a[href]:not(:where(
     [href^='#'],
     [href^='/']:not([href^='//']),
@@ -82,7 +82,5 @@ export const PageWrapper = styled.div`
       border-color: ${props => props.theme.inputActiveBorderColor};
       background-color: ${props => props.theme.inputActiveBackgroundColor};
     }
-
-
   }
 `
