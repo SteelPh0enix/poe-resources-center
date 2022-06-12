@@ -9,8 +9,11 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: ['gatsby-plugin-styled-components',
+  plugins: [
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-mdx',
+    'gatsby-plugin-graphql-codegen',
+    'gatsby-source-build-date',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -18,20 +21,15 @@ const config: GatsbyConfig = {
         path: './src/pages/'
       },
       __key: 'pages'
-    }]
-}
-
-module.exports = {
-  graphqlTypegen: true,
-  plugins: [{
-    resolve: 'gatsby-steam-game-achievements-source',
-    options: {
-      games: [
-        { title: 'Path of Exile', steamID: '238960' }
-      ]
+    },
+    {
+      resolve: 'gatsby-steam-game-achievements-source',
+      options: {
+        games: [
+          { title: 'Path of Exile', steamID: '238960' }
+        ]
+      }
     }
-  },
-  'gatsby-plugin-graphql-codegen'
   ]
 }
 

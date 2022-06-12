@@ -86,10 +86,14 @@ export const PageWrapper = styled.div`
 
   table {
     table-layout: auto;
-    border-collapse: collapse;
     color: ${props => props.theme.tableFontColor};
-    
+    border-collapse: collapse;
     border: 3px solid ${props => props.theme.tableBorderColor};
+    
+
+    caption {
+      font-size: larger;
+    }
 
     thead {
       background-color: ${props => props.theme.tableHeaderBackgroundColor};
@@ -98,6 +102,8 @@ export const PageWrapper = styled.div`
           padding: 10px;
           font-size: large;
         }
+
+        border-bottom: 3px solid ${props => props.theme.tableHeaderSeparatorColor};
       }
     }
 
@@ -115,6 +121,14 @@ export const PageWrapper = styled.div`
       tr:nth-child(even) {
         background-color: ${props => props.theme.tableEvenRowsBackgroundColor};
       }
+    }
+
+    td + td, th + th {
+      border-left: ${props => props.theme.tableColumnLineEnabled ? '2px solid' + props.theme.tableColumnLineColor : 'none'};
+    }
+
+    tr + tr {
+      border-top: ${props => props.theme.tableRowLineEnabled ? '1px dashed' + props.theme.tableRowLineColor : 'none'};
     }
   }
 `

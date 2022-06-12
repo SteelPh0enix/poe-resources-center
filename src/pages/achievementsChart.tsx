@@ -2,13 +2,26 @@ import { graphql } from 'gatsby'
 import * as React from 'react'
 import MainLayout from '../layouts/mainLayout'
 import { GetPoEAchievementsStatsQuery } from '../../graphql-types'
+import styled from 'styled-components'
+
+const ModifiedDateSubtext = styled.div`
+  font-size: smaller;
+  font-style: italic;
+`
+
+const PoEAchievementsStatsTable = styled.table`
+  width: 50ch;
+`
 
 export default function AchievementsChartPage ({ data }: {data: GetPoEAchievementsStatsQuery}): React.ReactElement {
   return (
     <MainLayout>
-      <h2>This is PoE achievements chart</h2>
+      <PoEAchievementsStatsTable>
+        <caption>
+          PoE achievements and % of Steam playerbase which achieved them
+          <ModifiedDateSubtext>Data fetched from Steam API @ {data.currentBuildDate?.currentDate}</ModifiedDateSubtext>
+        </caption>
 
-      <table>
         <thead>
           <tr>
             <th>Achievement name</th>
@@ -26,7 +39,7 @@ export default function AchievementsChartPage ({ data }: {data: GetPoEAchievemen
             ))
           }
         </tbody>
-      </table>
+      </PoEAchievementsStatsTable>
     </MainLayout>
   )
 }
@@ -39,6 +52,8 @@ query GetPoEAchievementsStats {
       percent
     }
   }
+  currentBuildDate {
+    currentDate
+  }
 }
-
 `

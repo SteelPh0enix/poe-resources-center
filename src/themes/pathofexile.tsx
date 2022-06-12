@@ -1,6 +1,5 @@
 import { Theme } from './theme'
 
-
 const defaultMainColor = '#13110f'
 const defaultFontColor = '#d8aa64'
 const defaultFontLinkColor = '#ffc267'
@@ -75,7 +74,12 @@ export const PathOfExileTheme: Theme = {
 
   tableFontColor: defaultFontColor,
   tableBorderColor: '#9e7c49',
+  tableHeaderSeparatorColor: '#9e7c49',
   tableHeaderBackgroundColor: '#18130e',
   tableOddRowsBackgroundColor: '#312315',
-  tableEvenRowsBackgroundColor: '#221b13'
+  tableEvenRowsBackgroundColor: '#221b13',
+  tableColumnLineEnabled: true,
+  tableColumnLineColor: '#705833',
+  tableRowLineEnabled: true,
+  tableRowLineColor: '#705833'
 }

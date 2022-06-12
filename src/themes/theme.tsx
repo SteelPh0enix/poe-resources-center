@@ -64,7 +64,12 @@ export interface Theme {
 
   tableFontColor: string
   tableBorderColor: string
+  tableHeaderSeparatorColor: string
   tableHeaderBackgroundColor: string
   tableOddRowsBackgroundColor: string
   tableEvenRowsBackgroundColor: string
+  tableColumnLineEnabled: boolean
+  tableColumnLineColor: string
+  tableRowLineEnabled: boolean
+  tableRowLineColor: string
 }
