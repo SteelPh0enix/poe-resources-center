@@ -4,14 +4,6 @@ import MainLayout from '../layouts/mainLayout'
 import { GetPoEAchievementsStatsQuery } from '../../graphql-types'
 
 export default function AchievementsChartPage ({ data }: {data: GetPoEAchievementsStatsQuery}): React.ReactElement {
-  if (data.gameAchievements == null) {
-    return (
-      <MainLayout>
-        <h2>No data source for achievements!</h2>
-      </MainLayout>
-    )
-  }
-
   return (
     <MainLayout>
       <h2>This is PoE achievements chart</h2>
