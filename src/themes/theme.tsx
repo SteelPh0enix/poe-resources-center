@@ -59,6 +59,12 @@ export interface Theme {
   inputActiveFontColor: string
   inputActiveBorderColor: string
   inputActiveBackgroundColor: string
-  inputAnimationsEnabled: boolean,
-  inputAnimationsDuration: string,
+  inputAnimationsEnabled: boolean
+  inputAnimationsDuration: string
+
+  tableFontColor: string
+  tableBorderColor: string
+  tableHeaderBackgroundColor: string
+  tableOddRowsBackgroundColor: string
+  tableEvenRowsBackgroundColor: string
 }

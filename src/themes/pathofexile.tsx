@@ -1,5 +1,7 @@
 import { Theme } from './theme'
 
+
+const defaultMainColor = '#13110f'
 const defaultFontColor = '#d8aa64'
 const defaultFontLinkColor = '#ffc267'
 const defaultFontLinkActiveColor = '#f19f22'
@@ -8,7 +10,7 @@ const defaultBorderActiveColor = '#bb7b1c'
 const defaultAnimationDuration = '200ms'
 
 export const PathOfExileTheme: Theme = {
-  mainColor: '#13110f',
+  mainColor: defaultMainColor,
   animationsEnabled: true,
   smoothScrollingEnabled: true,
 
@@ -18,7 +20,7 @@ export const PathOfExileTheme: Theme = {
   scrollbarColor: '#473a2e',
   scrollbarBackgroundColor: '#2c1d10',
 
-  headerColor: '#3f2f18',
+  headerColor: '#4e351e',
   headerFontColor: '#cf9845',
   headerLinkColor: '#c27400',
   headerLinkActiveColor: '#d68b1a',
@@ -69,5 +71,11 @@ export const PathOfExileTheme: Theme = {
   inputActiveBorderColor: defaultBorderActiveColor,
   inputActiveBackgroundColor: '#3d2f23',
   inputAnimationsEnabled: true,
-  inputAnimationsDuration: defaultAnimationDuration
+  inputAnimationsDuration: defaultAnimationDuration,
+
+  tableFontColor: defaultFontColor,
+  tableBorderColor: '#9e7c49',
+  tableHeaderBackgroundColor: '#18130e',
+  tableOddRowsBackgroundColor: '#312315',
+  tableEvenRowsBackgroundColor: '#221b13'
 }

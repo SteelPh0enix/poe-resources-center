@@ -21,7 +21,7 @@ export default function AchievementsChartPage ({ data }: {data: GetPoEAchievemen
             data?.gameAchievements?.achievements?.map((achievement, index) => (
               <tr key={index}>
                 <td>{achievement?.name}</td>
-                <td>{achievement?.percent}</td>
+                <td>{achievement?.percent?.toFixed(1)}%</td>
               </tr>
             ))
           }

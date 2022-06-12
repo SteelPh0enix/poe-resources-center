@@ -83,4 +83,38 @@ export const PageWrapper = styled.div`
       background-color: ${props => props.theme.inputActiveBackgroundColor};
     }
   }
+
+  table {
+    table-layout: auto;
+    border-collapse: collapse;
+    color: ${props => props.theme.tableFontColor};
+    
+    border: 3px solid ${props => props.theme.tableBorderColor};
+
+    thead {
+      background-color: ${props => props.theme.tableHeaderBackgroundColor};
+      tr {
+        th {
+          padding: 10px;
+          font-size: large;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          padding: 5px;
+        }
+      }
+
+      tr:nth-child(odd) {
+        background-color: ${props => props.theme.tableOddRowsBackgroundColor};
+      }
+
+      tr:nth-child(even) {
+        background-color: ${props => props.theme.tableEvenRowsBackgroundColor};
+      }
+    }
+  }
 `
