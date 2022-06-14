@@ -3,11 +3,9 @@ import * as React from 'react'
 const idRegex = /([a-z]|[A-Z]|[0-9]|-)+/
 
 // used to compare data in column
-// if `first` > `second`, return 1
-// if `first` < `second`, return -1
-// if `first` === `second`, return 0
+// should return first < second equivalent
 export interface SortComparator {
-  (first: any, second: any): number
+  (first: any, second: any): boolean
 }
 
 // used to format cell values, if they need different
@@ -26,6 +24,7 @@ export interface DisplayFormatter {
 export interface TableColumn {
   header: any,
   id: string,
+  inverseSortingByDefault?: boolean
   valueComparator?: SortComparator
   valueDisplayFormatter?: DisplayFormatter
 }
@@ -49,6 +48,16 @@ export interface SortableTableProps {
   caption?: any
   tableData: TableData
 }
+interface RowSorter {
+  (first: TableRow, second: TableRow): number
+}
+
+interface SortingState {
+  columnKey: string,
+  inverse: boolean
+}
+
+type SetSortingStateFunction = React.Dispatch<React.SetStateAction<SortingState | null>>
 
 class TableIDError extends Error {
   constructor (msg: string) {
@@ -64,13 +73,37 @@ class TableSortingError extends Error {
   }
 }
 
-function SortableTableHead ({ meta, setSortedFieldFunc }: {meta: Array<TableColumn>, setSortedFieldFunc: Function}): React.ReactElement {
+function findColumnByID (columns: Array<TableColumn>, id: string): TableColumn | undefined {
+  return columns.find((column) => { return column.id === id })
+}
+
+function findColumnIndexByID (columns: Array<TableColumn>, id: string): number {
+  return columns.findIndex((column) => { return column.id === id })
+}
+
+function SortableTableHead ({ columns, setSortingState: setSortState, sortState }: {
+  columns: Array<TableColumn>,
+  setSortingState: SetSortingStateFunction,
+  sortState: SortingState | null})
+  : React.ReactElement {
+  const isColumnInverseOrderedByDefault = (columnKey: string) => {
+    const column = findColumnByID(columns, columnKey)
+    return column?.inverseSortingByDefault ?? false
+  }
+
+  const updateSortingState = (columnKey: string) => {
+    const inverse = sortState?.columnKey === columnKey ? !sortState.inverse : isColumnInverseOrderedByDefault(columnKey)
+    setSortState({ columnKey, inverse })
+  }
+
   return (
     <thead>
       <tr>
-        { meta.map(({ header, id }) => {
+        { columns.map(({ header, id }) => {
           return <th key={id}>
-            <button type="button" onClick={() => setSortedFieldFunc(id)}>{header}</button>
+            <button type="button" onClick={() => {
+              updateSortingState(id)
+            }}>{header}</button>
           </th>
         })}
       </tr>
@@ -96,35 +129,28 @@ function SortableTableBody ({ data }: {data: TableData}): React.ReactElement {
   )
 }
 
-interface RowSorter {
-  (first: TableRow, second: TableRow): number
-}
-
-function getRowComparatorForColumn (columns: Array<TableColumn>, columnID: string): RowSorter | undefined {
-  const columnIndex = columns.findIndex((column) => { return (column.id === columnID) })
+function getRowComparatorForColumn (columns: Array<TableColumn>, sortingState: SortingState): RowSorter {
+  const columnIndex = findColumnIndexByID(columns, sortingState.columnKey)
   if (columnIndex === -1) {
-    throw new TableSortingError(`Unknown column ID ${columnID}`)
+    throw new TableSortingError(`Unknown column ID ${sortingState.columnKey}`)
   }
 
-  const comparator = columns[columnIndex].valueComparator == null
-    ? columns[columnIndex].valueComparator
-    : undefined
-
-  if (comparator) {
-    return (first: TableRow, second: TableRow) => {
-      return comparator(first.values[columnIndex], second.values[columnIndex])
-    }
-  }
+  const columnComparator = columns[columnIndex].valueComparator
+  const comparator = columnComparator ?? ((a: TableRow, b: TableRow) => { return a.values[columnIndex] < b.values[columnIndex] })
 
   return (first: TableRow, second: TableRow) => {
-    if (first.values[columnIndex] < second.values[columnIndex]) { return 1 }
-    if (first.values[columnIndex] > second.values[columnIndex]) { return -1 }
+    if (comparator(first, second)) {
+      return (sortingState.inverse ? -1 : 1)
+    }
+    if (comparator(second, first)) {
+      return (sortingState.inverse ? 1 : -1)
+    }
     return 0
   }
 }
 
 export default function SortableTable (props: SortableTableProps): React.ReactElement {
-  const [sortedField, setSortedField] = React.useState(null)
+  const [sortingState, setSortingState] = React.useState<SortingState | null>(null)
 
   props.tableData.columns.forEach(({ id }, index) => {
     if (!idRegex.test(id)) {
@@ -140,13 +166,13 @@ export default function SortableTable (props: SortableTableProps): React.ReactEl
 
   const sortedData = { ...props.tableData }
 
-  if (sortedField != null) {
-    sortedData.rows.sort(getRowComparatorForColumn(props.tableData.columns, sortedField))
+  if (sortingState != null) {
+    sortedData.rows.sort(getRowComparatorForColumn(props.tableData.columns, sortingState))
   }
 
   return (<table>
     { props.caption != null ? <caption>{props.caption}</caption> : null }
-    <SortableTableHead meta={props.tableData.columns} setSortedFieldFunc={setSortedField}/>
+    <SortableTableHead columns={props.tableData.columns} setSortingState={setSortingState} sortState={sortingState}/>
     <SortableTableBody data={sortedData} />
   </table>)
 }
