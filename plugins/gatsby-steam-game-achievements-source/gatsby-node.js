@@ -20,8 +20,15 @@ exports.onPreInit = () => {
 const GAME_NODE_TYPE = 'GameAchievements'
 
 function zipGameTitlesToAchievements (titles, achievements) {
+  const withID = (achievements) => achievements.map((achievement, index) => {
+    return {
+      id: index + 1,
+      data: achievement
+    }
+  })
+
   return titles.map((title, index) => {
-    return { id: index, title, achievements: achievements[index] }
+    return { gameID: index, title, achievements: withID(achievements[index]) }
   })
 }
 
@@ -42,7 +49,7 @@ exports.sourceNodes = async ({
 
   gamesData.forEach(game => createNode({
     ...game,
-    id: createNodeId(`${GAME_NODE_TYPE}-${game.id}`),
+    id: createNodeId(`${GAME_NODE_TYPE}-${game.gameID}`),
     parent: null,
     children: [],
     internal: {

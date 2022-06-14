@@ -389,11 +389,17 @@ export type GameAchievements = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
+  gameID?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['String']>;
   achievements?: Maybe<Array<Maybe<GameAchievementsAchievements>>>;
 };
 
 export type GameAchievementsAchievements = {
+  id?: Maybe<Scalars['Int']>;
+  data?: Maybe<GameAchievementsAchievementsData>;
+};
+
+export type GameAchievementsAchievementsData = {
   name?: Maybe<Scalars['String']>;
   percent?: Maybe<Scalars['Float']>;
 };
@@ -673,6 +679,7 @@ export type QueryGameAchievementsArgs = {
   parent?: InputMaybe<NodeFilterInput>;
   children?: InputMaybe<NodeFilterListInput>;
   internal?: InputMaybe<InternalFilterInput>;
+  gameID?: InputMaybe<IntQueryOperatorInput>;
   title?: InputMaybe<StringQueryOperatorInput>;
   achievements?: InputMaybe<GameAchievementsAchievementsFilterListInput>;
 };
@@ -2586,6 +2593,11 @@ export type GameAchievementsAchievementsFilterListInput = {
 };
 
 export type GameAchievementsAchievementsFilterInput = {
+  id?: InputMaybe<IntQueryOperatorInput>;
+  data?: InputMaybe<GameAchievementsAchievementsDataFilterInput>;
+};
+
+export type GameAchievementsAchievementsDataFilterInput = {
   name?: InputMaybe<StringQueryOperatorInput>;
   percent?: InputMaybe<FloatQueryOperatorInput>;
 };
@@ -2722,10 +2734,12 @@ export type GameAchievementsFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
+  | 'gameID'
   | 'title'
   | 'achievements'
-  | 'achievements___name'
-  | 'achievements___percent';
+  | 'achievements___id'
+  | 'achievements___data___name'
+  | 'achievements___data___percent';
 
 export type GameAchievementsGroupConnection = {
   totalCount: Scalars['Int'];
@@ -2773,6 +2787,7 @@ export type GameAchievementsFilterInput = {
   parent?: InputMaybe<NodeFilterInput>;
   children?: InputMaybe<NodeFilterListInput>;
   internal?: InputMaybe<InternalFilterInput>;
+  gameID?: InputMaybe<IntQueryOperatorInput>;
   title?: InputMaybe<StringQueryOperatorInput>;
   achievements?: InputMaybe<GameAchievementsAchievementsFilterListInput>;
 };
@@ -2973,4 +2988,4 @@ export type CurrentBuildDateSortInput = {
 export type GetPoEAchievementsStatsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPoEAchievementsStatsQuery = { gameAchievements?: { achievements?: Array<{ name?: string | null, percent?: number | null } | null> | null } | null, currentBuildDate?: { currentDate?: string | null } | null };
+export type GetPoEAchievementsStatsQuery = { gameAchievements?: { achievements?: Array<{ id?: number | null, data?: { percent?: number | null, name?: string | null } | null } | null> | null } | null, currentBuildDate?: { currentDate?: string | null } | null };
