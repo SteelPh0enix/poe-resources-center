@@ -10,6 +10,12 @@ export interface SortComparator {
   (first: any, second: any): number
 }
 
+// used to format cell values, if they need different
+// representation than default
+export interface DisplayFormatter {
+  (value: any): any
+}
+
 // table column metadata, with column header content
 // id is required and should be a simple unique string.
 // regex used to perform id validation is at the top of this file.
@@ -21,6 +27,7 @@ export interface TableColumn {
   header: any,
   id: string,
   valueComparator?: SortComparator
+  valueDisplayFormatter?: DisplayFormatter
 }
 
 // Each row must have unique ID. Same rules as for column ID.
@@ -46,18 +53,24 @@ export interface SortableTableProps {
 class TableIDError extends Error {
   constructor (msg: string) {
     super(msg)
-
     Object.setPrototypeOf(this, TableIDError.prototype)
   }
 }
 
-function SortableTableHead ({ meta }: {meta: Array<TableColumn>}): React.ReactElement {
+class TableSortingError extends Error {
+  constructor (msg: string) {
+    super(msg)
+    Object.setPrototypeOf(this, TableSortingError.prototype)
+  }
+}
+
+function SortableTableHead ({ meta, setSortedFieldFunc }: {meta: Array<TableColumn>, setSortedFieldFunc: Function}): React.ReactElement {
   return (
     <thead>
       <tr>
         { meta.map(({ header, id }) => {
           return <th key={id}>
-            {header}
+            <button type="button" onClick={() => setSortedFieldFunc(id)}>{header}</button>
           </th>
         })}
       </tr>
@@ -72,7 +85,9 @@ function SortableTableBody ({ data }: {data: TableData}): React.ReactElement {
           data.rows.map(({ values, id }) => {
             return <tr key={id}>
               {values.map((value, columnIndex) => {
-                return (<td key={id + '-' + columnIndex.toString()}>{value}</td>)
+                return (<td key={id + '-' + columnIndex.toString()}>{
+                  data.columns[columnIndex].valueDisplayFormatter != null ? data.columns[columnIndex].valueDisplayFormatter?.(value) : value
+                  }</td>)
               })}
             </tr>
           })
@@ -81,7 +96,36 @@ function SortableTableBody ({ data }: {data: TableData}): React.ReactElement {
   )
 }
 
+interface RowSorter {
+  (first: TableRow, second: TableRow): number
+}
+
+function getRowComparatorForColumn (columns: Array<TableColumn>, columnID: string): RowSorter | undefined {
+  const columnIndex = columns.findIndex((column) => { return (column.id === columnID) })
+  if (columnIndex === -1) {
+    throw new TableSortingError(`Unknown column ID ${columnID}`)
+  }
+
+  const comparator = columns[columnIndex].valueComparator == null
+    ? columns[columnIndex].valueComparator
+    : undefined
+
+  if (comparator) {
+    return (first: TableRow, second: TableRow) => {
+      return comparator(first.values[columnIndex], second.values[columnIndex])
+    }
+  }
+
+  return (first: TableRow, second: TableRow) => {
+    if (first.values[columnIndex] < second.values[columnIndex]) { return 1 }
+    if (first.values[columnIndex] > second.values[columnIndex]) { return -1 }
+    return 0
+  }
+}
+
 export default function SortableTable (props: SortableTableProps): React.ReactElement {
+  const [sortedField, setSortedField] = React.useState(null)
+
   props.tableData.columns.forEach(({ id }, index) => {
     if (!idRegex.test(id)) {
       throw new TableIDError(`ID of column #${index} (${id}) is incorrect!`)
@@ -94,9 +138,15 @@ export default function SortableTable (props: SortableTableProps): React.ReactEl
     }
   })
 
+  const sortedData = { ...props.tableData }
+
+  if (sortedField != null) {
+    sortedData.rows.sort(getRowComparatorForColumn(props.tableData.columns, sortedField))
+  }
+
   return (<table>
     { props.caption != null ? <caption>{props.caption}</caption> : null }
-    <SortableTableHead meta={props.tableData.columns} />
-    <SortableTableBody data={props.tableData} />
+    <SortableTableHead meta={props.tableData.columns} setSortedFieldFunc={setSortedField}/>
+    <SortableTableBody data={sortedData} />
   </table>)
 }

@@ -32,20 +32,19 @@ export default function AchievementsChartPage ({ data }: {data: GetPoEAchievemen
       id: 'achievement-name'
     }, {
       header: '% of playerbase',
-      id: 'percent-of-players'
+      id: 'percent-of-players',
+      valueDisplayFormatter: (value: number) => value.toFixed(1) + '%'
     }
   ]
 
   const rows: TableRow[] = data.gameAchievements?.achievements
     ? data?.gameAchievements?.achievements?.map(achievement => {
       return {
-        values: [achievement?.id, achievement?.data?.name, achievement?.data?.percent?.toFixed(1) + '%'],
+        values: [achievement?.id, achievement?.data?.name, achievement?.data?.percent],
         id: achievement?.id ? achievement.id.toString() : ''
       }
     })
     : []
-
-  console.log(rows)
 
   const tableDataProps = {
     columns,
