@@ -26,10 +26,12 @@ export default function AchievementsChartPage ({ data }: {data: GetPoEAchievemen
   const columns: TableColumn[] = [
     {
       header: 'No.',
-      id: 'no-of-row'
+      id: 'no-of-row',
+      inverseSortingByDefault: true
     }, {
       header: 'Name',
-      id: 'achievement-name'
+      id: 'achievement-name',
+      inverseSortingByDefault: true
     }, {
       header: '% of playerbase',
       id: 'percent-of-players',

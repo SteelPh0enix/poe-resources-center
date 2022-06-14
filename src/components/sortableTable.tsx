@@ -1,4 +1,5 @@
 import * as React from 'react'
+import styled from 'styled-components'
 
 const idRegex = /([a-z]|[A-Z]|[0-9]|-)+/
 
@@ -73,38 +74,39 @@ class TableSortingError extends Error {
   }
 }
 
-function findColumnByID (columns: Array<TableColumn>, id: string): TableColumn | undefined {
-  return columns.find((column) => { return column.id === id })
-}
-
 function findColumnIndexByID (columns: Array<TableColumn>, id: string): number {
   return columns.findIndex((column) => { return column.id === id })
 }
+
+const ClickableTableHeader = styled.th`
+  height: 100%;
+  width: 100%;
+`
+
+const SortIndicator = styled.span`
+  
+`
 
 function SortableTableHead ({ columns, setSortingState: setSortState, sortState }: {
   columns: Array<TableColumn>,
   setSortingState: SetSortingStateFunction,
   sortState: SortingState | null})
   : React.ReactElement {
-  const isColumnInverseOrderedByDefault = (columnKey: string) => {
-    const column = findColumnByID(columns, columnKey)
-    return column?.inverseSortingByDefault ?? false
-  }
-
-  const updateSortingState = (columnKey: string) => {
-    const inverse = sortState?.columnKey === columnKey ? !sortState.inverse : isColumnInverseOrderedByDefault(columnKey)
+  const updateSortingState = (columnKey: string, isInverseSortingByDefault: boolean | undefined) => {
+    const inverse = sortState?.columnKey === columnKey ? !sortState.inverse : isInverseSortingByDefault ?? false
     setSortState({ columnKey, inverse })
   }
 
   return (
     <thead>
       <tr>
-        { columns.map(({ header, id }) => {
-          return <th key={id}>
-            <button type="button" onClick={() => {
-              updateSortingState(id)
-            }}>{header}</button>
-          </th>
+        { columns.map(column => {
+          return (<ClickableTableHeader key={column.id} onClick={() => {
+            updateSortingState(column.id, column.inverseSortingByDefault)
+          }}>
+              {column.header}
+              {sortState?.columnKey === column.id ? <SortIndicator>{sortState.inverse ? '▲' : '▼' }</SortIndicator> : null}
+          </ClickableTableHeader>)
         })}
       </tr>
     </thead>
