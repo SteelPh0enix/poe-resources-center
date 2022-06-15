@@ -101,9 +101,10 @@ function SortableTableHead ({ columns, setSortingState: setSortState, sortState 
     <thead>
       <tr>
         { columns.map(column => {
-          return (<ClickableTableHeader key={column.id} onClick={() => {
-            updateSortingState(column.id, column.inverseSortingByDefault)
-          }}>
+          return (<ClickableTableHeader title="Click to sort by this column"
+                  key={column.id} onClick={() => {
+                    updateSortingState(column.id, column.inverseSortingByDefault)
+                  }}>
               {column.header}
               {sortState?.columnKey === column.id ? <SortIndicator>{sortState.inverse ? '▲' : '▼' }</SortIndicator> : null}
           </ClickableTableHeader>)
@@ -166,15 +167,13 @@ export default function SortableTable (props: SortableTableProps): React.ReactEl
     }
   })
 
-  const sortedData = { ...props.tableData }
-
   if (sortingState != null) {
-    sortedData.rows.sort(getRowComparatorForColumn(props.tableData.columns, sortingState))
+    props.tableData.rows.sort(getRowComparatorForColumn(props.tableData.columns, sortingState))
   }
 
   return (<table>
     { props.caption != null ? <caption>{props.caption}</caption> : null }
     <SortableTableHead columns={props.tableData.columns} setSortingState={setSortingState} sortState={sortingState}/>
-    <SortableTableBody data={sortedData} />
+    <SortableTableBody data={props.tableData} />
   </table>)
 }
