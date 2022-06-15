@@ -11,6 +11,7 @@ import { PathOfExileTheme } from '../themes/pathofexile'
 import { PageWrapper } from './pageWrapper'
 import { Link } from 'gatsby'
 import SidebarExternalLink from '../components/sidebar/sidebarExternalLink'
+import LineChart from '../components/lineChart'
 
 const PageContainer = styled.div`
   display: flex;

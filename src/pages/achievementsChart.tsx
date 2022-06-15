@@ -4,6 +4,18 @@ import MainLayout from '../layouts/mainLayout'
 import { GetPoEAchievementsStatsQuery } from '../../graphql-types'
 import styled from 'styled-components'
 import SortableTable, { TableColumn, TableRow } from '../components/sortableTable'
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
+import { Line } from 'react-chartjs-2'
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+)
 
 const ModifiedDateSubtext = styled.div`
   font-size: smaller;
@@ -14,6 +26,19 @@ const ModifiedDateSubtext = styled.div`
 const PoEAchievementsStatsTable = styled(SortableTable)`
   width: 50ch;
 `
+
+const chartOptions = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top' as const
+    },
+    title: {
+      display: true,
+      text: 'Hello, world!'
+    }
+  }
+}
 
 export default function AchievementsChartPage ({ data }: {data: GetPoEAchievementsStatsQuery}): React.ReactElement {
   const caption = (
@@ -53,8 +78,23 @@ export default function AchievementsChartPage ({ data }: {data: GetPoEAchievemen
     rows
   }
 
+  const topAchievements = data?.gameAchievements?.achievements?.slice(0, 10) ?? []
+  const chartLabels = topAchievements?.map(achievement => achievement?.data?.name) ?? null
+  const chartDataset = {
+    label: '% players',
+    data: topAchievements?.map(achievement => achievement?.data?.percent) ?? [],
+    borderColor: 'rgb(187, 0, 0)',
+    backgroundColor: 'rgb(49, 37, 26)'
+  }
+
+  const chartData = {
+    labels: chartLabels,
+    datasets: [chartDataset]
+  }
+
   return (
     <MainLayout>
+      <Line options={chartOptions} data={chartData} />
       <PoEAchievementsStatsTable caption={caption} tableData={tableDataProps}/>
     </MainLayout>
   )
