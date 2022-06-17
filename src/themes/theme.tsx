@@ -1,7 +1,7 @@
 export interface Theme {
   fontName: string
   fontSizePt: number
-  fontSizeSmallerPt: number
+  fontSmallerSizePt: number
 
   mainColor: string
   animationsEnabled: boolean

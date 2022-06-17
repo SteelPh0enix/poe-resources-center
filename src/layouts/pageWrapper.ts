@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import '@fontsource/lato'
 
 export const PageWrapper = styled.div`
   background-color: ${props => props.theme.mainColor};

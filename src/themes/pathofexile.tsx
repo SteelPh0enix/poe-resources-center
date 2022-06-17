@@ -12,7 +12,7 @@ const defaultAnimationDuration = '200ms'
 export const PathOfExileTheme: Theme = {
   fontName: 'Lato',
   fontSizePt: 14,
-  fontSizeSmallerPt: 10,
+  fontSmallerSizePt: 10,
 
   mainColor: defaultMainColor,
   animationsEnabled: true,
