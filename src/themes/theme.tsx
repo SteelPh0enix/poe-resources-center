@@ -72,4 +72,8 @@ export interface Theme {
   tableColumnLineColor: string
   tableRowLineEnabled: boolean
   tableRowLineColor: string
+
+  chartBackgroundColor: string
+  chartBorderColor: string
+  chartFontColor: string
 }

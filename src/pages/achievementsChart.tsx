@@ -82,9 +82,9 @@ export default function AchievementsChartPage ({ data }: {data: GetPoEAchievemen
   const chartLabels = topAchievements?.map(achievement => achievement?.data?.name) ?? null
   const chartDataset = {
     label: '% players',
-    data: topAchievements?.map(achievement => achievement?.data?.percent) ?? [],
-    borderColor: 'rgb(187, 0, 0)',
-    backgroundColor: 'rgb(49, 37, 26)'
+    data: topAchievements?.map(achievement => achievement?.data?.percent) ?? []
+    // borderColor: 'red',
+    // backgroundColor: 'green'
   }
 
   const chartData = {

@@ -81,5 +81,9 @@ export const PathOfExileTheme: Theme = {
   tableColumnLineEnabled: true,
   tableColumnLineColor: '#705833',
   tableRowLineEnabled: true,
-  tableRowLineColor: '#705833'
+  tableRowLineColor: '#705833',
+
+  chartBackgroundColor: '#181303',
+  chartBorderColor: 'red',
+  chartFontColor: 'green'
 }

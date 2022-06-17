@@ -11,7 +11,7 @@ import { PathOfExileTheme } from '../themes/pathofexile'
 import { PageWrapper } from './pageWrapper'
 import { Link } from 'gatsby'
 import SidebarExternalLink from '../components/sidebar/sidebarExternalLink'
-import LineChart from '../components/lineChart'
+import applyChartsTheme from '../chartsDefaults'
 
 const PageContainer = styled.div`
   display: flex;
@@ -38,6 +38,8 @@ const HeaderPad = styled.div`
 `
 
 export default function MainLayout ({ children }: { children: React.ReactNode }): React.ReactElement {
+  applyChartsTheme()
+
   return (
     <ThemeProvider theme={PathOfExileTheme}>
       <PageWrapper>
