@@ -1,10 +1,12 @@
 import styled from 'styled-components'
+import '@fontsource/lato'
 
 export const PageWrapper = styled.div`
   background-color: ${props => props.theme.mainColor};
   color: ${props => props.theme.fontColor};
 
-  font-family: 'Lato';
+  font-family: ${props => props.theme.fontName};
+  font-size: ${props => `${props.theme.fontSize}pt`};
 
   scroll-behavior: ${props => props.theme.smoothScrollingEnabled ? 'smooth' : 'auto'};
 
@@ -22,6 +24,10 @@ export const PageWrapper = styled.div`
    
   &::-webkit-scrollbar-track {
     background: ${props => props.theme.scrollbarBackgroundColor};
+  }
+
+  @media(max-width: 1000px) {
+    font-size: ${props => `${props.theme.fontSize}pt`};
   }
 
   a {

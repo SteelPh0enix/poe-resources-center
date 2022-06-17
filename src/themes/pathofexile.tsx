@@ -1,4 +1,5 @@
 import { Theme } from './theme'
+import '@fontsource/lato'
 
 const defaultMainColor = '#13110f'
 const defaultFontColor = '#d8aa64'
@@ -9,6 +10,10 @@ const defaultBorderActiveColor = '#bb7b1c'
 const defaultAnimationDuration = '200ms'
 
 export const PathOfExileTheme: Theme = {
+  fontName: 'Lato',
+  fontSizePt: 14,
+  fontSizeSmallerPt: 10,
+
   mainColor: defaultMainColor,
   animationsEnabled: true,
   smoothScrollingEnabled: true,
@@ -83,7 +88,8 @@ export const PathOfExileTheme: Theme = {
   tableRowLineEnabled: true,
   tableRowLineColor: '#705833',
 
-  chartBackgroundColor: '#181303',
+  chartBackgroundColor: 'blue',
   chartBorderColor: 'red',
-  chartFontColor: 'green'
+  chartFontColor: 'green',
+  chartFontSizePt: 16
 }

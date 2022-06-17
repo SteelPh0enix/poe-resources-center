@@ -1,4 +1,8 @@
 export interface Theme {
+  fontName: string
+  fontSizePt: number
+  fontSizeSmallerPt: number
+
   mainColor: string
   animationsEnabled: boolean
   smoothScrollingEnabled: boolean
@@ -76,4 +80,5 @@ export interface Theme {
   chartBackgroundColor: string
   chartBorderColor: string
   chartFontColor: string
+  chartFontSizePt: number
 }
