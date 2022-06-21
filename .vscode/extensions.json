@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "silvenon.mdx",
+    "streetsidesoftware.code-spell-checker",
+    "naumovs.color-highlight",
+    "dbaeumer.vscode-eslint",
+    "graphql.vscode-graphql",
+    "davidanson.vscode-markdownlint",
+    "christian-kohler.path-intellisense",
+    "gamunu.vscode-yarn",
+    "styled-components.vscode-styled-components"
+  ]
+}
